@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Bullshit
 {
-    public partial class MainForm : Form
+    public partial class Lobby : Form
     {
-        public MainForm()
+        public Lobby()
         {
             InitializeComponent();
             FormBorderStyle = FormBorderStyle.None;

@@ -11,9 +11,13 @@ namespace Bullshit
         [STAThread]
         static void Main()
         {
+            //у меня английская винда
+            Console.OutputEncoding = System.Text.Encoding.Unicode;
+            Console.InputEncoding = System.Text.Encoding.Unicode;
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            Application.Run(new Lobby());
         }
     }
 }
