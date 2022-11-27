@@ -29,13 +29,14 @@
         private void InitializeComponent()
         {
             this.PanelTop = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.TextServerIP = new System.Windows.Forms.TextBox();
+            this.TextServerPort = new System.Windows.Forms.TextBox();
             this.ButtonConnect = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.ButtonCreate = new System.Windows.Forms.Button();
             this.ButtonExit = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.TextMyPort = new System.Windows.Forms.TextBox();
+            this.ButtonOffline = new System.Windows.Forms.Button();
+            this.TextMyIP = new System.Windows.Forms.TextBox();
             this.PanelTop.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,21 +52,21 @@
             this.PanelTop.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PanelTop_MouseMove);
             this.PanelTop.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PanelTop_MouseUp);
             // 
-            // textBox1
+            // TextServerIP
             // 
-            this.textBox1.Location = new System.Drawing.Point(13, 29);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 2;
-            this.textBox1.Text = "ip";
+            this.TextServerIP.Location = new System.Drawing.Point(13, 29);
+            this.TextServerIP.Name = "TextServerIP";
+            this.TextServerIP.Size = new System.Drawing.Size(100, 20);
+            this.TextServerIP.TabIndex = 2;
+            this.TextServerIP.Text = "ip";
             // 
-            // textBox2
+            // TextServerPort
             // 
-            this.textBox2.Location = new System.Drawing.Point(119, 29);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 3;
-            this.textBox2.Text = "port";
+            this.TextServerPort.Location = new System.Drawing.Point(119, 29);
+            this.TextServerPort.Name = "TextServerPort";
+            this.TextServerPort.Size = new System.Drawing.Size(100, 20);
+            this.TextServerPort.TabIndex = 3;
+            this.TextServerPort.Text = "port";
             // 
             // ButtonConnect
             // 
@@ -75,16 +76,6 @@
             this.ButtonConnect.TabIndex = 4;
             this.ButtonConnect.Text = "Connect";
             this.ButtonConnect.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label1.Location = new System.Drawing.Point(10, 85);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 13);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Your ip";
             // 
             // ButtonCreate
             // 
@@ -105,13 +96,31 @@
             this.ButtonExit.UseVisualStyleBackColor = true;
             this.ButtonExit.Click += new System.EventHandler(this.ButtonExit_Click);
             // 
-            // textBox3
+            // TextMyPort
             // 
-            this.textBox3.Location = new System.Drawing.Point(119, 82);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 7;
-            this.textBox3.Text = "port";
+            this.TextMyPort.Location = new System.Drawing.Point(119, 82);
+            this.TextMyPort.Name = "TextMyPort";
+            this.TextMyPort.Size = new System.Drawing.Size(100, 20);
+            this.TextMyPort.TabIndex = 7;
+            this.TextMyPort.Text = "port";
+            // 
+            // ButtonOffline
+            // 
+            this.ButtonOffline.Location = new System.Drawing.Point(119, 110);
+            this.ButtonOffline.Name = "ButtonOffline";
+            this.ButtonOffline.Size = new System.Drawing.Size(75, 23);
+            this.ButtonOffline.TabIndex = 8;
+            this.ButtonOffline.Text = "Offline";
+            this.ButtonOffline.UseVisualStyleBackColor = true;
+            this.ButtonOffline.Click += new System.EventHandler(this.ButtonOffline_Click);
+            // 
+            // TextMyIP
+            // 
+            this.TextMyIP.Location = new System.Drawing.Point(13, 82);
+            this.TextMyIP.Name = "TextMyIP";
+            this.TextMyIP.Size = new System.Drawing.Size(100, 20);
+            this.TextMyIP.TabIndex = 9;
+            this.TextMyIP.Text = "Your ip";
             // 
             // Lobby
             // 
@@ -119,16 +128,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Desktop;
             this.ClientSize = new System.Drawing.Size(234, 141);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.TextMyIP);
+            this.Controls.Add(this.ButtonOffline);
+            this.Controls.Add(this.TextMyPort);
             this.Controls.Add(this.ButtonCreate);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.ButtonConnect);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.TextServerPort);
+            this.Controls.Add(this.TextServerIP);
             this.Controls.Add(this.PanelTop);
             this.Name = "Lobby";
             this.Text = "Bull Shoot - Menu";
-            this.Resize += new System.EventHandler(this.MainForm_Resize);
             this.PanelTop.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -137,13 +146,14 @@
 
         #endregion
         private System.Windows.Forms.Panel PanelTop;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox TextServerIP;
+        private System.Windows.Forms.TextBox TextServerPort;
         private System.Windows.Forms.Button ButtonConnect;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button ButtonCreate;
         private System.Windows.Forms.Button ButtonExit;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox TextMyPort;
+        private System.Windows.Forms.Button ButtonOffline;
+        private System.Windows.Forms.TextBox TextMyIP;
     }
 }
 

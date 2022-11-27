@@ -16,7 +16,6 @@ namespace Bullshit
         {
             InitializeComponent();
             FormBorderStyle = FormBorderStyle.None;
-            NetworkConnection.Connect();
         }
         #region Custom Window Controls
         private bool _mouseDown;

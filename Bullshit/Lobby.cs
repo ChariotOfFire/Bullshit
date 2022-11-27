@@ -21,8 +21,6 @@ namespace Bullshit
         #region Custom Window Controls
         private bool _mouseDown;
         private Point _lastMousePosition;
-        private bool Maximized { get =>
-                WindowState == FormWindowState.Maximized; }
 
         private void PanelTop_MouseDown(object sender, MouseEventArgs e)
         {
@@ -51,24 +49,11 @@ namespace Bullshit
         {
             Close();
         }
-
-        private void ButtonMaximize_Click(object sender, EventArgs e)
-        {
-            if (Maximized)
-                WindowState = FormWindowState.Normal;
-            else
-                WindowState = FormWindowState.Maximized;
-        }
-
-        private void ButtonMinimize_Click(object sender, EventArgs e)
-        {
-            WindowState = FormWindowState.Minimized;
-        }
-
-        private void MainForm_Resize(object sender, EventArgs e)
-        {
-            PanelTop.Width = Width;
-        }
         #endregion
+
+        private void ButtonOffline_Click(object sender, EventArgs e)
+        {
+            new MainForm().ShowDialog();
+        }
     }
 }
