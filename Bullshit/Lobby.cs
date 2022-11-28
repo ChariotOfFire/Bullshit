@@ -16,7 +16,9 @@ namespace Bullshit
         {
             InitializeComponent();
             FormBorderStyle = FormBorderStyle.None;
+            FormClosing += OnClosing;
         }
+
         #region Custom Window Controls
         private bool _mouseDown;
         private Point _lastMousePosition;
@@ -57,6 +59,11 @@ namespace Bullshit
             Show();
         }
 
+        private void OnClosing(object sender, FormClosingEventArgs e)
+        {
+            NetworkServer.CloseConnection();
+        }
+
         private void ButtonOffline_Click(object sender, EventArgs e)
         {
             ShowMainForm();
@@ -70,12 +77,12 @@ namespace Bullshit
 
         private void ButtonConnect_Click(object sender, EventArgs e)
         {
-            NetworkClient.Connect();
+            NetworkClient.Connect(TextServerIP.Text);
         }
 
         private void ButtonCreate_Click(object sender, EventArgs e)
         {
-            NetworkServer.Create();
+            NetworkServer.Create(TextServerIP.Text);
         }
     }
 }

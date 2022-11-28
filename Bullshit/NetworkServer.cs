@@ -20,10 +20,17 @@ namespace Bullshit
 
         }
 
-        public async static void Create()
+        public async static void Create(string host)
         {
+            if (host.Contains(":") == false)
+                return;
+
+            var hostArray = host.Split(':');
+            var ip = hostArray[0];
+            var port = int.Parse(hostArray[1]);
+
             var localAddress = IPAddress.Parse("127.0.0.1");
-            var localEndPoint = new IPEndPoint(localAddress, 8888);
+            var localEndPoint = new IPEndPoint(localAddress, port);
             _tcpServer = new TcpListener(localEndPoint);
             Console.WriteLine(_tcpServer.LocalEndpoint);
             _tcpServer.Start();
@@ -37,6 +44,12 @@ namespace Bullshit
                 Console.WriteLine($"Входящее подключение: {tcpClient.Client.RemoteEndPoint}");
             }
             _tcpServer.Stop(); // останавливаем сервер
+        }
+
+        public static void CloseConnection()
+        {
+            Console.WriteLine("Connection stopped");
+            _tcpServer.Stop();
         }
     }
 }

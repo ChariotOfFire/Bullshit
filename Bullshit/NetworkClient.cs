@@ -6,14 +6,20 @@ namespace Bullshit
 {
     public class NetworkClient
     {
-        public static async void Connect()
+        public static async void Connect(string host)
         {
+            if (host.Contains(":") == false)
+                return;
+
+            var hostArray = host.Split(':');
+            var ip = hostArray[0];
+            var port = int.Parse(hostArray[1]);
             using (TcpClient tcpClient = new TcpClient())
             {
                 Console.WriteLine("Клиент запущен");
                 try
                 {
-                    await tcpClient.ConnectAsync("127.0.0.1", 8888);
+                    await tcpClient.ConnectAsync(ip, port);
                 }
                 catch (SocketException e)
                 {
