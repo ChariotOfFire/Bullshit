@@ -54,9 +54,15 @@ namespace Bullshit
         private void ButtonMaximize_Click(object sender, EventArgs e)
         {
             if (Maximized)
+            {
                 WindowState = FormWindowState.Normal;
+                ButtonMaximize.Text = "+";
+            }
             else
+            {
                 WindowState = FormWindowState.Maximized;
+                ButtonMaximize.Text = "-";
+            }
         }
 
         private void ButtonMinimize_Click(object sender, EventArgs e)

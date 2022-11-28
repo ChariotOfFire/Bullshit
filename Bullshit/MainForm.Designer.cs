@@ -81,7 +81,7 @@
             this.ButtonMaximize.Name = "ButtonMaximize";
             this.ButtonMaximize.Size = new System.Drawing.Size(22, 22);
             this.ButtonMaximize.TabIndex = 3;
-            this.ButtonMaximize.Text = "s";
+            this.ButtonMaximize.Text = "+";
             this.ButtonMaximize.UseVisualStyleBackColor = false;
             this.ButtonMaximize.Click += new System.EventHandler(this.ButtonMaximize_Click);
             // 

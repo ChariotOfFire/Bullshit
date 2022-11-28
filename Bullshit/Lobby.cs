@@ -16,7 +16,6 @@ namespace Bullshit
         {
             InitializeComponent();
             FormBorderStyle = FormBorderStyle.None;
-            NetworkConnection.Connect();
         }
         #region Custom Window Controls
         private bool _mouseDown;
@@ -51,9 +50,32 @@ namespace Bullshit
         }
         #endregion
 
+        private void ShowMainForm()
+        {
+            Hide();
+            new MainForm().ShowDialog();
+            Show();
+        }
+
         private void ButtonOffline_Click(object sender, EventArgs e)
         {
-            new MainForm().ShowDialog();
+            ShowMainForm();
+        }
+
+        private void LinkIP_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Console.WriteLine("Your IP of all devices:");
+            NetworkServer.MyIP();
+        }
+
+        private void ButtonConnect_Click(object sender, EventArgs e)
+        {
+            NetworkClient.Connect();
+        }
+
+        private void ButtonCreate_Click(object sender, EventArgs e)
+        {
+            NetworkServer.Create();
         }
     }
 }
