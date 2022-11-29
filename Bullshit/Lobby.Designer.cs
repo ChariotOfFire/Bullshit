@@ -30,12 +30,13 @@
         {
             this.PanelTop = new System.Windows.Forms.Panel();
             this.ButtonExit = new System.Windows.Forms.Button();
-            this.TextServerIP = new System.Windows.Forms.TextBox();
+            this.TextIP = new System.Windows.Forms.TextBox();
             this.ButtonConnect = new System.Windows.Forms.Button();
             this.ButtonCreate = new System.Windows.Forms.Button();
             this.ButtonOffline = new System.Windows.Forms.Button();
             this.TextName = new System.Windows.Forms.TextBox();
-            this.LinkIP = new System.Windows.Forms.LinkLabel();
+            this.LinkIPCopy = new System.Windows.Forms.LinkLabel();
+            this.LinkIPShow = new System.Windows.Forms.LinkLabel();
             this.PanelTop.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,15 +61,15 @@
             this.ButtonExit.UseVisualStyleBackColor = true;
             this.ButtonExit.Click += new System.EventHandler(this.ButtonExit_Click);
             // 
-            // TextServerIP
+            // TextIP
             // 
-            this.TextServerIP.BackColor = System.Drawing.Color.White;
-            this.TextServerIP.ForeColor = System.Drawing.Color.Black;
-            this.TextServerIP.Location = new System.Drawing.Point(12, 55);
-            this.TextServerIP.Name = "TextServerIP";
-            this.TextServerIP.Size = new System.Drawing.Size(100, 20);
-            this.TextServerIP.TabIndex = 2;
-            this.TextServerIP.Text = "127.0.0.1:44444";
+            this.TextIP.BackColor = System.Drawing.Color.White;
+            this.TextIP.ForeColor = System.Drawing.Color.Black;
+            this.TextIP.Location = new System.Drawing.Point(12, 55);
+            this.TextIP.Name = "TextIP";
+            this.TextIP.Size = new System.Drawing.Size(100, 20);
+            this.TextIP.TabIndex = 2;
+            this.TextIP.Text = "127.0.0.1:44444";
             // 
             // ButtonConnect
             // 
@@ -116,19 +117,33 @@
             this.TextName.TabIndex = 10;
             this.TextName.Text = "Player";
             // 
-            // LinkIP
+            // LinkIPCopy
             // 
-            this.LinkIP.ActiveLinkColor = System.Drawing.Color.Silver;
-            this.LinkIP.AutoSize = true;
-            this.LinkIP.ForeColor = System.Drawing.Color.Black;
-            this.LinkIP.LinkColor = System.Drawing.Color.White;
-            this.LinkIP.Location = new System.Drawing.Point(12, 84);
-            this.LinkIP.Name = "LinkIP";
-            this.LinkIP.Size = new System.Drawing.Size(47, 13);
-            this.LinkIP.TabIndex = 12;
-            this.LinkIP.TabStop = true;
-            this.LinkIP.Text = "Show IP";
-            this.LinkIP.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkIP_LinkClicked);
+            this.LinkIPCopy.ActiveLinkColor = System.Drawing.Color.Silver;
+            this.LinkIPCopy.AutoSize = true;
+            this.LinkIPCopy.ForeColor = System.Drawing.Color.Black;
+            this.LinkIPCopy.LinkColor = System.Drawing.Color.White;
+            this.LinkIPCopy.Location = new System.Drawing.Point(12, 84);
+            this.LinkIPCopy.Name = "LinkIPCopy";
+            this.LinkIPCopy.Size = new System.Drawing.Size(44, 13);
+            this.LinkIPCopy.TabIndex = 12;
+            this.LinkIPCopy.TabStop = true;
+            this.LinkIPCopy.Text = "Copy IP";
+            this.LinkIPCopy.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkIPCopy_LinkClicked);
+            // 
+            // LinkIPShow
+            // 
+            this.LinkIPShow.ActiveLinkColor = System.Drawing.Color.Silver;
+            this.LinkIPShow.AutoSize = true;
+            this.LinkIPShow.ForeColor = System.Drawing.Color.Black;
+            this.LinkIPShow.LinkColor = System.Drawing.Color.White;
+            this.LinkIPShow.Location = new System.Drawing.Point(68, 84);
+            this.LinkIPShow.Name = "LinkIPShow";
+            this.LinkIPShow.Size = new System.Drawing.Size(47, 13);
+            this.LinkIPShow.TabIndex = 13;
+            this.LinkIPShow.TabStop = true;
+            this.LinkIPShow.Text = "Show IP";
+            this.LinkIPShow.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkIPShow_LinkClicked);
             // 
             // Lobby
             // 
@@ -136,15 +151,18 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(234, 111);
-            this.Controls.Add(this.LinkIP);
+            this.Controls.Add(this.LinkIPShow);
+            this.Controls.Add(this.LinkIPCopy);
             this.Controls.Add(this.TextName);
             this.Controls.Add(this.ButtonOffline);
             this.Controls.Add(this.ButtonCreate);
             this.Controls.Add(this.ButtonConnect);
-            this.Controls.Add(this.TextServerIP);
+            this.Controls.Add(this.TextIP);
             this.Controls.Add(this.PanelTop);
+            this.ForeColor = System.Drawing.Color.Black;
             this.Name = "Lobby";
             this.Text = "Bull Shoot - Menu";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Lobby_FormClosing);
             this.PanelTop.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -153,13 +171,14 @@
 
         #endregion
         private System.Windows.Forms.Panel PanelTop;
-        private System.Windows.Forms.TextBox TextServerIP;
+        private System.Windows.Forms.TextBox TextIP;
         private System.Windows.Forms.Button ButtonConnect;
         private System.Windows.Forms.Button ButtonCreate;
         private System.Windows.Forms.Button ButtonExit;
         private System.Windows.Forms.Button ButtonOffline;
         private System.Windows.Forms.TextBox TextName;
-        private System.Windows.Forms.LinkLabel LinkIP;
+        private System.Windows.Forms.LinkLabel LinkIPCopy;
+        private System.Windows.Forms.LinkLabel LinkIPShow;
     }
 }
 

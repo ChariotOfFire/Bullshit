@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Bullshit
@@ -9,6 +10,9 @@ namespace Bullshit
         {
             InitializeComponent();
             FormBorderStyle = FormBorderStyle.None;
+            // Icon setup
+            System.IntPtr handle = Properties.Resources.icon.GetHicon();
+            Icon = Icon.FromHandle(handle);
         }
         #region Custom Window Controls
         private bool Maximized { get =>

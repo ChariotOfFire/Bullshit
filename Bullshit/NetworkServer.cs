@@ -8,19 +8,21 @@ namespace Bullshit
     {
         private static TcpListener _tcpServer;
 
-        public static void MyIP()
+        public static string MyIP()
         {
-            Console.WriteLine("Your IP of all devices:");
             // Получение имени компьютера.
             string host = Dns.GetHostName();
             // Получение ip-адреса.
+            string ipAdresses = "";
             foreach (var e in Dns.GetHostEntry(host).AddressList)
             {
-                if (e.ToString().Contains(":"))
-                    continue;
-                Console.WriteLine(e.ToString());
+                if (e.ToString().Contains(":") == false &&
+                    e.ToString().StartsWith("192.") == false)
+                    ipAdresses += $"Public IP: {e}\n";
+                if (e.ToString().StartsWith("192."))
+                    ipAdresses += $"Local IP:  {e}\n";
             }
-
+            return ipAdresses;
         }
 
         public async static void Create(string host)
