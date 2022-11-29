@@ -10,11 +10,14 @@ namespace Bullshit
 
         public static void MyIP()
         {
+            Console.WriteLine("Your IP of all devices:");
             // Получение имени компьютера.
             string host = Dns.GetHostName();
             // Получение ip-адреса.
             foreach (var e in Dns.GetHostEntry(host).AddressList)
             {
+                if (e.ToString().Contains(":"))
+                    continue;
                 Console.WriteLine(e.ToString());
             }
 

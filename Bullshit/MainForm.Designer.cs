@@ -39,7 +39,7 @@
             // 
             // pictureBox
             // 
-            this.pictureBox.BackColor = System.Drawing.SystemColors.Desktop;
+            this.pictureBox.BackColor = System.Drawing.Color.Black;
             this.pictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox.Location = new System.Drawing.Point(0, 0);
             this.pictureBox.Name = "pictureBox";
@@ -49,7 +49,7 @@
             // 
             // PanelTop
             // 
-            this.PanelTop.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.PanelTop.BackColor = System.Drawing.Color.Gray;
             this.PanelTop.Controls.Add(this.ButtonMinimize);
             this.PanelTop.Controls.Add(this.ButtonMaximize);
             this.PanelTop.Controls.Add(this.ButtonExit);
@@ -57,13 +57,11 @@
             this.PanelTop.Name = "PanelTop";
             this.PanelTop.Size = new System.Drawing.Size(800, 22);
             this.PanelTop.TabIndex = 1;
-            this.PanelTop.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PanelTop_MouseDown);
             this.PanelTop.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PanelTop_MouseMove);
-            this.PanelTop.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PanelTop_MouseUp);
             // 
             // ButtonMinimize
             // 
-            this.ButtonMinimize.BackColor = System.Drawing.Color.Transparent;
+            this.ButtonMinimize.BackColor = System.Drawing.Color.White;
             this.ButtonMinimize.ForeColor = System.Drawing.Color.Black;
             this.ButtonMinimize.Location = new System.Drawing.Point(31, 0);
             this.ButtonMinimize.Name = "ButtonMinimize";
@@ -75,7 +73,7 @@
             // 
             // ButtonMaximize
             // 
-            this.ButtonMaximize.BackColor = System.Drawing.Color.Transparent;
+            this.ButtonMaximize.BackColor = System.Drawing.Color.White;
             this.ButtonMaximize.ForeColor = System.Drawing.Color.Black;
             this.ButtonMaximize.Location = new System.Drawing.Point(59, 0);
             this.ButtonMaximize.Name = "ButtonMaximize";
@@ -87,7 +85,7 @@
             // 
             // ButtonExit
             // 
-            this.ButtonExit.BackColor = System.Drawing.Color.Transparent;
+            this.ButtonExit.BackColor = System.Drawing.Color.White;
             this.ButtonExit.ForeColor = System.Drawing.Color.Black;
             this.ButtonExit.Location = new System.Drawing.Point(3, 0);
             this.ButtonExit.Name = "ButtonExit";

@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Bullshit
@@ -16,33 +9,13 @@ namespace Bullshit
         {
             InitializeComponent();
             FormBorderStyle = FormBorderStyle.None;
-            FormClosing += OnClosing;
         }
-
         #region Custom Window Controls
-        private bool _mouseDown;
-        private Point _lastMousePosition;
-
-        private void PanelTop_MouseDown(object sender, MouseEventArgs e)
-        {
-            _mouseDown = true;
-            _lastMousePosition = MousePosition;
-        }
-
-        private void PanelTop_MouseUp(object sender, MouseEventArgs e)
-        {
-            _mouseDown = false;
-        }
-
         private void PanelTop_MouseMove(object sender, MouseEventArgs e)
         {
-            if (_mouseDown)
+            if (e.Button == MouseButtons.Left)
             {
-                int xoffset = MousePosition.X - _lastMousePosition.X;
-                int yoffset = MousePosition.Y - _lastMousePosition.Y;
-                Left += xoffset;
-                Top += yoffset;
-                _lastMousePosition = MousePosition;
+                Location = MousePosition;
             }
         }
 
@@ -59,11 +32,6 @@ namespace Bullshit
             Show();
         }
 
-        private void OnClosing(object sender, FormClosingEventArgs e)
-        {
-            NetworkServer.CloseConnection();
-        }
-
         private void ButtonOffline_Click(object sender, EventArgs e)
         {
             ShowMainForm();
@@ -71,7 +39,6 @@ namespace Bullshit
 
         private void LinkIP_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Console.WriteLine("Your IP of all devices:");
             NetworkServer.MyIP();
         }
 
