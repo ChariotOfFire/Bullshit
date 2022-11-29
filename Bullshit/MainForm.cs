@@ -11,7 +11,7 @@ namespace Bullshit
             InitializeComponent();
             FormBorderStyle = FormBorderStyle.None;
             // Icon setup
-            System.IntPtr handle = Properties.Resources.icon.GetHicon();
+            IntPtr handle = Properties.Resources.icon.GetHicon();
             Icon = Icon.FromHandle(handle);
         }
         #region Custom Window Controls

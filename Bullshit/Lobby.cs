@@ -12,7 +12,7 @@ namespace Bullshit
             FormBorderStyle = FormBorderStyle.None;
             TextIP.Text = Properties.Settings.Default.IPAddress;
             // Icon setup
-            System.IntPtr handle = Properties.Resources.icon.GetHicon();
+            IntPtr handle = Properties.Resources.icon.GetHicon();
             Icon = Icon.FromHandle(handle);
         }
         #region Custom Window Controls
