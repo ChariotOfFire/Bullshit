@@ -28,11 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.PanelTop = new System.Windows.Forms.Panel();
             this.ButtonMinimize = new System.Windows.Forms.Button();
             this.ButtonMaximize = new System.Windows.Forms.Button();
             this.ButtonExit = new System.Windows.Forms.Button();
+            this.TextChat = new System.Windows.Forms.Label();
+            this.ChatFade = new System.Windows.Forms.Timer(this.components);
+            this.GameTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.PanelTop.SuspendLayout();
             this.SuspendLayout();
@@ -53,6 +57,7 @@
             this.PanelTop.Controls.Add(this.ButtonMinimize);
             this.PanelTop.Controls.Add(this.ButtonMaximize);
             this.PanelTop.Controls.Add(this.ButtonExit);
+            this.PanelTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.PanelTop.Location = new System.Drawing.Point(0, 0);
             this.PanelTop.Name = "PanelTop";
             this.PanelTop.Size = new System.Drawing.Size(800, 22);
@@ -95,19 +100,45 @@
             this.ButtonExit.UseVisualStyleBackColor = false;
             this.ButtonExit.Click += new System.EventHandler(this.ButtonExit_Click);
             // 
+            // TextChat
+            // 
+            this.TextChat.AutoSize = true;
+            this.TextChat.BackColor = System.Drawing.Color.Black;
+            this.TextChat.ForeColor = System.Drawing.Color.White;
+            this.TextChat.Location = new System.Drawing.Point(602, 35);
+            this.TextChat.Name = "TextChat";
+            this.TextChat.Size = new System.Drawing.Size(29, 13);
+            this.TextChat.TabIndex = 2;
+            this.TextChat.Text = "Chat";
+            this.TextChat.TextChanged += new System.EventHandler(this.TextChat_TextChanged);
+            // 
+            // ChatFade
+            // 
+            this.ChatFade.Enabled = true;
+            this.ChatFade.Interval = 15000;
+            this.ChatFade.Tick += new System.EventHandler(this.ChatFade_Tick);
+            // 
+            // GameTimer
+            // 
+            this.GameTimer.Enabled = true;
+            this.GameTimer.Interval = 20;
+            this.GameTimer.Tick += new System.EventHandler(this.GameTimer_Tick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.TextChat);
             this.Controls.Add(this.PanelTop);
             this.Controls.Add(this.pictureBox);
             this.Name = "MainForm";
             this.Text = "Bull Shoot";
-            this.Resize += new System.EventHandler(this.MainForm_Resize);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.PanelTop.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -118,6 +149,9 @@
         private System.Windows.Forms.Button ButtonExit;
         private System.Windows.Forms.Button ButtonMinimize;
         private System.Windows.Forms.Button ButtonMaximize;
+        private System.Windows.Forms.Label TextChat;
+        private System.Windows.Forms.Timer ChatFade;
+        private System.Windows.Forms.Timer GameTimer;
     }
 }
 

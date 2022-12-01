@@ -11,9 +11,18 @@ namespace Bullshit
             InitializeComponent();
             FormBorderStyle = FormBorderStyle.None;
             TextIP.Text = Properties.Settings.Default.IPAddress;
+            TextName.Text = Properties.Settings.Default.Username;
+
             // Icon setup
             IntPtr handle = Properties.Resources.icon.GetHicon();
             Icon = Icon.FromHandle(handle);
+            // Controls setup
+            ButtonOffline.Select();
+            ButtonExit.DisableSelect();
+            LinkIPCopy.DisableSelect();
+            LinkIPShow.DisableSelect();
+            TextName.DisableSelect();
+            TextIP.DisableSelect();
         }
         #region Custom Window Controls
         private void PanelTop_MouseMove(object sender, MouseEventArgs e)
@@ -33,6 +42,7 @@ namespace Bullshit
         private void ShowMainForm()
         {
             Hide();
+            NetworkClient.Username = TextName.Text;
             new MainForm().ShowDialog();
             Show();
         }
@@ -45,7 +55,7 @@ namespace Bullshit
         private void LinkIPCopy_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Clipboard.SetText(NetworkServer.MyIP());
-            LinkIPCopy.Name = "Copied";
+            LinkIPCopy.Text = "Copied";
         }
         private void LinkIPShow_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -57,21 +67,24 @@ namespace Bullshit
         private void ButtonConnect_Click(object sender, EventArgs e)
         {
             NetworkClient.Connect(TextIP.Text);
+            ShowMainForm();
         }
 
         private void ButtonCreate_Click(object sender, EventArgs e)
         {
             NetworkServer.Create(TextIP.Text);
+            ShowMainForm();
         }
 
         private void Lobby_FormClosing(object sender, FormClosingEventArgs e)
         {
             var host = TextIP.Text;
-            if (host.Contains(":") == false)
-                return;
-            Properties.Settings.Default.IPAddress = host;
+            if (host.Contains(":"))
+                Properties.Settings.Default.IPAddress = host;
+            Properties.Settings.Default.Username = TextName.Text;
             Properties.Settings.Default.Save();
-        }
 
+            NetworkClient.Disconnect();
+        }
     }
 }

@@ -52,13 +52,14 @@
             // 
             // ButtonExit
             // 
+            this.ButtonExit.BackColor = System.Drawing.Color.White;
             this.ButtonExit.ForeColor = System.Drawing.Color.Black;
             this.ButtonExit.Location = new System.Drawing.Point(13, 0);
             this.ButtonExit.Name = "ButtonExit";
             this.ButtonExit.Size = new System.Drawing.Size(22, 22);
             this.ButtonExit.TabIndex = 0;
             this.ButtonExit.Text = "X";
-            this.ButtonExit.UseVisualStyleBackColor = true;
+            this.ButtonExit.UseVisualStyleBackColor = false;
             this.ButtonExit.Click += new System.EventHandler(this.ButtonExit_Click);
             // 
             // TextIP
