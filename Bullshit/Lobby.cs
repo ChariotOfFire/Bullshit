@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.Sockets;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -6,12 +7,15 @@ namespace Bullshit
 {
     public partial class Lobby : Form
     {
+        ServerObject server;
+        ClientObject client;
         public Lobby()
         {
             InitializeComponent();
             FormBorderStyle = FormBorderStyle.None;
             TextIP.Text = Properties.Settings.Default.IPAddress;
             TextName.Text = Properties.Settings.Default.Username;
+
 
             // Icon setup
             IntPtr handle = Properties.Resources.icon.GetHicon();
@@ -42,7 +46,7 @@ namespace Bullshit
         private void ShowMainForm()
         {
             Hide();
-            NetworkClient.Username = TextName.Text;
+            Network.Username = TextName.Text;
             new MainForm().ShowDialog();
             Show();
         }
@@ -54,25 +58,27 @@ namespace Bullshit
 
         private void LinkIPCopy_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Clipboard.SetText(NetworkServer.MyIP());
+            Clipboard.SetText(Network.MyIP());
             LinkIPCopy.Text = "Copied";
         }
         private void LinkIPShow_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            MessageBox.Show(NetworkServer.MyIP(), "Your IP",
+            MessageBox.Show(Network.MyIP(), "Your IP",
                 MessageBoxButtons.OK, MessageBoxIcon.Information,
                 MessageBoxDefaultButton.Button2);
         }
 
         private void ButtonConnect_Click(object sender, EventArgs e)
         {
-            NetworkClient.Connect(TextIP.Text);
+            client = new ClientObject(TextIP.Text, TextName.Text);
+            client.Connect(TextIP.Text);
             ShowMainForm();
         }
 
-        private void ButtonCreate_Click(object sender, EventArgs e)
+        private async void ButtonCreate_Click(object sender, EventArgs e)
         {
-            NetworkServer.Create(TextIP.Text);
+            server = new ServerObject(int.Parse(TextIP.Text.Split(':')[1]));
+            await server.ListenAsync(); // запускаем сервер
             ShowMainForm();
         }
 
@@ -84,7 +90,7 @@ namespace Bullshit
             Properties.Settings.Default.Username = TextName.Text;
             Properties.Settings.Default.Save();
 
-            NetworkClient.Disconnect();
+            //.Disconnect();
         }
     }
 }

@@ -105,7 +105,7 @@
             this.TextChat.AutoSize = true;
             this.TextChat.BackColor = System.Drawing.Color.Black;
             this.TextChat.ForeColor = System.Drawing.Color.White;
-            this.TextChat.Location = new System.Drawing.Point(602, 35);
+            this.TextChat.Location = new System.Drawing.Point(24, 50);
             this.TextChat.Name = "TextChat";
             this.TextChat.Size = new System.Drawing.Size(29, 13);
             this.TextChat.TabIndex = 2;
