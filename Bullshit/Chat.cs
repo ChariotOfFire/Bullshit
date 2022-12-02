@@ -29,7 +29,7 @@ namespace Bullshit
         {
             text = text.Trim();
             if (text.Length == 0) return;
-            string add = $"{Network.Username}: {text}";
+            string add = $"You: {text}";
             ListBox.Items.Add(add);
             ChatText += add + "\n";
             TextBox.Clear();
